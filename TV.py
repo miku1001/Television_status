@@ -46,6 +46,8 @@ class TV:
     def set_volume(self, new_volume_lvl):
         if self.tv_on:
             self.volume_lvl = new_volume_lvl
+            if self.volume_lvl > 100:
+                self.volume_lvl = 100
 
     # instance method (increase channel by 1)
     def channel_up(self):
@@ -60,7 +62,10 @@ class TV:
     # instance method (increase volume by 1)
     def volume_up(self):
         if self.tv_on:
-            self.volume_lvl += 1
+            if self.volume_lvl < 100:
+                self.volume_lvl += 1
+            else:
+                self.volume = 100
 
     # instance method (decrease volume by 1)
     def volume_down(self):
@@ -76,7 +81,7 @@ class TestTV:
         tv1 = TV()
         tv1.turn_on()
         tv1.get_channel()
-        tv1.set_channel(6)
+        tv1.set_channel(5)
         tv1.channel_up()
         tv1.channel_up()
         tv1.channel_down()
@@ -87,7 +92,7 @@ class TestTV:
         tv1.volume_down()
 
         # Print the volume and channel
-        print(f"TV1's channel is\033[34m {tv1.channel}\033[0m and volume level is \033[34m{tv1.volume_lvl}\033[0m")
+        print(f"TV1's channel is\033[33m {tv1.channel}\033[0m and volume level is \033[34m{tv1.volume_lvl}\033[0m \n")
 
         # Object 2(TV2)
         print("\033[1;31;40m TV2 Status \033[0m".center(80))
@@ -95,18 +100,18 @@ class TestTV:
         tv2 = TV()
         tv2.turn_on()
         tv2.get_channel()
-        tv2.set_channel(6)
+        tv2.set_channel(4)
         tv2.channel_up()
         tv2.channel_up()
         tv2.channel_down()
         tv2.get_volume()
-        tv2.set_volume(6)
+        tv2.set_volume(4)
         tv2.volume_up()
         tv2.volume_up()
         tv2.volume_down()
 
         # Print the volume and channel
-        print(f"TV2's channel is\033[34m {tv2.channel}\033[0m and volume level is \033[34m{tv2.volume_lvl}\033[0m")
+        print(f"TV2's channel is\033[33m {tv2.channel}\033[0m and volume level is \033[34m{tv2.volume_lvl}\033[0m")
 
 #__start__
 test_run = TestTV()
