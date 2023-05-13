@@ -46,6 +46,7 @@ class TV:
     def set_volume(self, new_volume_lvl):
         if self.tv_on:
             self.volume_lvl = new_volume_lvl
+            # Max 100
             if self.volume_lvl > 100:
                 self.volume_lvl = 100
 
@@ -62,6 +63,7 @@ class TV:
     # instance method (increase volume by 1)
     def volume_up(self):
         if self.tv_on:
+            # Max 100
             if self.volume_lvl < 100:
                 self.volume_lvl += 1
             else:
@@ -70,7 +72,11 @@ class TV:
     # instance method (decrease volume by 1)
     def volume_down(self):
         if self.tv_on:
-            self.volume_lvl -= 1
+            # Min 00
+            if self.volume_lvl > 0:
+                self.volume_lvl -= 1
+            else:
+                self.volume = 0
 
 # Create a Test Driver program named TestTV
 class TestTV:
@@ -105,7 +111,7 @@ class TestTV:
         tv2.channel_up()
         tv2.channel_down()
         tv2.get_volume()
-        tv2.set_volume(4)
+        tv2.set_volume(5)
         tv2.volume_up()
         tv2.volume_up()
         tv2.volume_down()
