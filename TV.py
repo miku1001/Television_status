@@ -29,8 +29,32 @@ class TV:
             self.channel = new_channel
             
     # instance method (return volume)
-# instance method (set new channel)
-# instance method (increase channel by 1)
-# instance method (decrease channel by 1)
-# instance method (increase volume by 1)
+    def get_volume(self):
+        if self.tv_on:
+            return self.volume_lvl
+        
+    # instance method (set new channel)
+    def set_volume(self, new_volume_lvl):
+        if self.tv_on:
+            self.volume_lvl = new_volume_lvl
+
+    # instance method (increase channel by 1)
+        def channel_up(self):
+            if self.tv_on:
+                self.channel += 1
+            
+    # instance method (decrease channel by 1)
+        def channel_down(self):
+            if self.tv_on:
+                self.channel -= 1
+
+    # instance method (increase volume by 1)
+        def volume_up(self):
+            if self.tv_on:
+                self.volume_lvl += 1
+
+        def volume_down(self):
+            if self.tv_on:
+                self.volume_lvl -= 1
+                
 # instance method (decrease volume by 1)
